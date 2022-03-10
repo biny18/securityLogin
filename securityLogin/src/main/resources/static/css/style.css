@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(238, 238, 238);
+}
+
+#registerLink {
+    text-decoration: none;
+}
+
+#formContainer {
+    border-radius: 1.5em;
+    background-color: white;
+    word-break: break-all;
+}
+
+#cardList {
+    border-radius: 1.0em;
+    background-color: white;
+    word-break: break-all;
+}
+
+
