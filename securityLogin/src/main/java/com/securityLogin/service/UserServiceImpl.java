@@ -16,6 +16,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Integer saveUser(UserDto userdto) {
 		userdto.setPassword(new BCryptPasswordEncoder().encode(userdto.getPassword()));
+		userdto.setAuthority("ROLE_USER");
 		
 		return userEntityRepository.save(userdto.toEntity()).getId().intValue();
 	}

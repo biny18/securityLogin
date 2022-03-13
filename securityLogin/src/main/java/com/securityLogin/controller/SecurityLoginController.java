@@ -1,7 +1,5 @@
 package com.securityLogin.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,15 +17,6 @@ public class SecurityLoginController {
 	
     @GetMapping("/")
     public String getLogin(Model model) throws Exception {
-		UserDto user = UserDto.builder()
-				.email("email@email.de")
-				.firstname("firstname")
-				.lastname("lastname")
-				.password("test")
-				.build();
-		
-		userService.saveUser(user);
-		
 		return "login";
 	}
     
@@ -41,11 +30,11 @@ public class SecurityLoginController {
 		return "register";
 	}
     
-    @PostMapping("/save")
-    public String savePost(UserDto userDto) throws Exception {
+    @PostMapping("/registerUser")
+    public String registerUser(UserDto userDto) throws Exception {
     	userService.saveUser(userDto);
 
-    	return "/login";
+    	return "redirect:/";
     }
     
 

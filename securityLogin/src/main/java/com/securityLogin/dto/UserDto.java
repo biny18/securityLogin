@@ -24,17 +24,20 @@ public class UserDto {
 	
 	private String password;
 	
+	private String authority;
+	
 	private LocalDateTime createdDate;
 	
 	private LocalDateTime modifiedDate;
 	
 	@Builder
-	public UserDto (Long id, String email, String firstname, String lastname, String password, LocalDateTime createdDate, LocalDateTime modifiedDate) {
+	public UserDto (Long id, String email, String firstname, String lastname, String password, LocalDateTime createdDate, LocalDateTime modifiedDate, String authority) {
 		this.id = id;
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.password = password;
+		this.authority = authority;
 		this.createdDate = createdDate;
 		this.modifiedDate = modifiedDate;
 	}
@@ -46,6 +49,7 @@ public class UserDto {
 				.firstname(firstname)
 				.lastname(lastname)
 				.password(password)
+				.authority(authority)
 				.build();
 		return build;
 	}

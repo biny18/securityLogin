@@ -48,6 +48,9 @@ public class UserEntity implements UserDetails{
 	@Column
 	private String password;
 	
+	@Column
+	private String authority;
+	
 	@Column(updatable=false)
 	@CreatedDate
 	private LocalDateTime createdDate;
@@ -57,25 +60,26 @@ public class UserEntity implements UserDetails{
 	private LocalDateTime modifiedDate;
 	
 	@Builder
-	public UserEntity(Long id, String email, String firstname, String lastname, String password) {
+	public UserEntity(Long id, String email, String firstname, String lastname, String password, String authority) {
 		this.id = id;
 		this.email = email;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.password = password;
+		this.authority = authority;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 	    Set<GrantedAuthority> authorities = new HashSet<>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+		authorities.add(new SimpleGrantedAuthority(this.authority));
         
 	    return authorities;
 	}
 
 	@Override
 	public String getUsername() {
-		return email;
+		return this.email;
 	}
 
 	@Override
