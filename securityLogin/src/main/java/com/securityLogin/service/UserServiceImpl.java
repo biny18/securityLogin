@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.securityLogin.constants.Role;
 import com.securityLogin.dto.UserDto;
 import com.securityLogin.repository.UserEntityRepository;
 
@@ -16,7 +17,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Integer saveUser(UserDto userdto) {
 		userdto.setPassword(new BCryptPasswordEncoder().encode(userdto.getPassword()));
-		userdto.setAuthority("ROLE_USER");
+		userdto.setAuthority(Role.USER.getRolename());
 		
 		return userEntityRepository.save(userdto.toEntity()).getId().intValue();
 	}
